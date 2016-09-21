@@ -42,6 +42,12 @@ class EntityAdmin(admin.ModelAdmin):
     )
 ```
 
+# Example
+
+Here's what it looks like:
+
+![Screenshot of dropdown admin filter](docs/list-filter-dropdown.png)
+
 # Credits
 
 Based on [this StackOverflow question](http://stackoverflow.com/a/20900314/258772) and
