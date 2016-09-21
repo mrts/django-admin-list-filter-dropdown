@@ -1,0 +1,3 @@
+include LICENSE
+include README.md
+recursive-include django_admin_listfilter_dropdown/templates *

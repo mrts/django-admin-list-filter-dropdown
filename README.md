@@ -30,11 +30,16 @@ INSTALLED_APPS = (
 Use in `admin.py`:
 
 ```py
-from django_admin_listfilter_dropdown.filters import DropdownFilter
+from django_admin_listfilter_dropdown.filters import DropdownFilter, RelatedDropdownFilter
 
 class EntityAdmin(admin.ModelAdmin):
     ...
-    list_filter = (('fieldname', DropdownFilter),)
+    list_filter = (
+        # for ordinary fields
+        ('a_charfield', DropdownFilter),
+        # for related fields
+        ('a_foreignkey_field', RelatedDropdownFilter),
+    )
 ```
 
 # Credits
