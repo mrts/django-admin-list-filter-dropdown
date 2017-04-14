@@ -6,16 +6,24 @@ from setuptools import find_packages, setup
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
+description = 'Use dropdowns in Django admin list filter'
+long_description = description
+if os.path.exists('README.txt'):
+    long_description = open('README.txt').read()
+
 setup(
     name='django-admin-list-filter-dropdown',
     version='1.0.0',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
-    description='Use dropdowns in Django admin list filter',
+    description=description,
+    long_description=long_description,
     url='https://github.com/mrts/django-admin-list-filter-dropdown',
+    download_url='https://github.com/mrts/django-admin-list-filter-dropdown/archive/1.0.0.zip',
     author='Mart Sõmermaa',
     author_email="mrts.pydev at gmail dot com",
+    keywords=['django', 'admin', 'filter', 'dropdown'],
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
