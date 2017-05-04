@@ -3,6 +3,8 @@
 import os
 from setuptools import find_packages, setup
 
+VERSION = '1.0.1'
+
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
@@ -13,14 +15,14 @@ if os.path.exists('README.txt'):
 
 setup(
     name='django-admin-list-filter-dropdown',
-    version='1.0.0',
+    version=VERSION,
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
     description=description,
     long_description=long_description,
     url='https://github.com/mrts/django-admin-list-filter-dropdown',
-    download_url='https://github.com/mrts/django-admin-list-filter-dropdown/archive/1.0.0.zip',
+    download_url='https://github.com/mrts/django-admin-list-filter-dropdown/archive/%s.zip' % VERSION,
     author='Mart Sõmermaa',
     author_email="mrts.pydev at gmail dot com",
     keywords=['django', 'admin', 'filter', 'dropdown'],
