@@ -13,7 +13,7 @@ filtering sidebar to avoid this problem.
 Install:
 
 ```sh
-pip install git+http://github.com/mrts/django-admin-list-filter-dropdown.git
+pip install django-admin-list-filter-dropdown
 ```
 
 Enable in `settings.py`:
@@ -46,7 +46,7 @@ class EntityAdmin(admin.ModelAdmin):
 
 Here's what it looks like:
 
-![Screenshot of dropdown admin filter](docs/list-filter-dropdown.png)
+![Screenshot of dropdown admin filter](https://raw.githubusercontent.com/mrts/django-admin-list-filter-dropdown/master/docs/list-filter-dropdown.png)
 
 # Credits
 
