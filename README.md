@@ -29,6 +29,28 @@ INSTALLED_APPS = (
 
 ```
 
+For `RelatedSelect2DropdownFilter` you need the following in your `ModelAdmin`:
+
+```
+class Media:
+    """
+    This is required for the batch update view to work with select2 dropdowns
+    """
+    js = (
+        'admin/js/vendor/jquery/jquery.min.js',
+        'admin/js/vendor/select2/select2.full.min.js',
+        'admin/js/jquery.init.js',
+        'admin/js/autocomplete.js',
+    )
+
+    css = {
+        'screen': (
+            'admin/css/vendor/select2/select2.min.css',
+            'admin/css/autocomplete.css',
+        ),
+    }
+```
+
 Use in `admin.py`:
 
 ```py
@@ -41,7 +63,7 @@ class EntityAdmin(admin.ModelAdmin):
         ('a_charfield', DropdownFilter),
         # for related fields
         ('a_foreignkey_field', RelatedDropdownFilter),
-        # RelatedSelect2DropdownFilter requires Django2 and the foreignkey field needs to be listed in the ModelAdmin's autocomplete_fields 
+        # RelatedSelect2DropdownFilter requires Django2 and the foreignkey field needs to be listed in the ModelAdmin's search_fields and autocomplete_fields 
         # https://docs.djangoproject.com/en/2.0/ref/contrib/admin/#django.contrib.admin.ModelAdmin.autocomplete_fields
         ('a_foreignkey_field2', RelatedSelect2DropdownFilter),
     )

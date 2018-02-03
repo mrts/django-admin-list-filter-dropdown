@@ -13,7 +13,7 @@
                 data-theme="admin-autocomplete"
                 data-placeholder=""
                 id="id_{{ spec.field_path }}"
-                class="admin-filter-autocomplete-{{ spec.field_path }}"
+                class="admin-filter-autocomplete"
                 style="width:100%;"
         >
             {% for choice in choices %}
@@ -25,8 +25,3 @@
     </li>
 </ul>
 
-<script>
-    $(document).ready(function () {
-        $('.admin-filter-autocomplete-{{ spec.field_path }}').djangoAdminFilterSelect2();
-    });
-</script>

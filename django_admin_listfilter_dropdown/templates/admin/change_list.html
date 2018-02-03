@@ -2,11 +2,10 @@
 {% load staticfiles %}
 
 {% block extrahead %}
-    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
-    <script type="text/javascript" src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
-
+    {{ block.super }}
     <script>
-        (function () {
+
+        (function ($) {
             var init = function ($element, options) {
                 var settings = $.extend({
                     ajax: {
@@ -41,12 +40,12 @@
                 return this;
             };
 
-        }());
+            $(function () {
+                $('.admin-filter-autocomplete').djangoAdminFilterSelect2();
+            });
+
+        }(django.jQuery));
 
     </script>
-    <link href="{% static 'admin/css/vendor/select2/select2.css' %}" type="text/css" media="screen" rel="stylesheet"/>
-    <link href="{% static 'admin/css/autocomplete.css' %}" type="text/css" media="screen" rel="stylesheet"/>
-
-    {{ block.super }}
 
 {% endblock %}
