@@ -1,0 +1,52 @@
+{% extends "admin/change_list.html" %}
+{% load staticfiles %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="{% static 'admin/js/vendor/jquery/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'admin/js/vendor/select2/select2.full.js' %}"></script>
+
+    <script>
+        (function () {
+            var init = function ($element, options) {
+                var settings = $.extend({
+                    ajax: {
+                        data: function (params) {
+                            return {
+                                term: params.term,
+                                page: params.page
+                            };
+                        }
+                    }
+                }, options);
+                $element.select2(settings).on('change', function (ev) {
+                    var filter_param = jQuery(this).attr('name') + '__id__exact';
+                    // TODO: Not all browsers support URLSearchParams
+                    // https://caniuse.com/#search=URLSearchParams
+                    params = new URLSearchParams(window.location.search);
+                    if (jQuery(this).val()) {
+                        params.set(filter_param, jQuery(this).val());
+                    } else {
+                        params.delete(filter_param);
+                    }
+                    window.location.search = params.toString()
+                })
+            };
+
+            $.fn.djangoAdminFilterSelect2 = function (options) {
+                var settings = $.extend({}, options);
+                $.each(this, function (i, element) {
+                    var $element = $(element);
+                    init($element, settings);
+                });
+                return this;
+            };
+
+        }());
+
+    </script>
+    <link href="{% static 'admin/css/vendor/select2/select2.css' %}" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="{% static 'admin/css/autocomplete.css' %}" type="text/css" media="screen" rel="stylesheet"/>
+
+    {{ block.super }}
+
+{% endblock %}

@@ -16,12 +16,14 @@ Install:
 pip install django-admin-list-filter-dropdown
 ```
 
-Enable in `settings.py`:
+Enable in `settings.py` before `django.contrib.admin`:
 
 ```py
 INSTALLED_APPS = (
     ...
     'django_admin_listfilter_dropdown',
+    'django.contrib.admin',
+    '',
     ...
 )
 
@@ -39,6 +41,9 @@ class EntityAdmin(admin.ModelAdmin):
         ('a_charfield', DropdownFilter),
         # for related fields
         ('a_foreignkey_field', RelatedDropdownFilter),
+        # RelatedSelect2DropdownFilter requires Django2 and the foreignkey field needs to be listed in the ModelAdmin's autocomplete_fields 
+        # https://docs.djangoproject.com/en/2.0/ref/contrib/admin/#django.contrib.admin.ModelAdmin.autocomplete_fields
+        ('a_foreignkey_field2', RelatedSelect2DropdownFilter),
     )
 ```
 

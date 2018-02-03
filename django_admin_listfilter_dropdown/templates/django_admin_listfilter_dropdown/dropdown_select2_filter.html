@@ -1,0 +1,32 @@
+{% load i18n django_admin_listfilter_dropdown_tags staticfiles %}
+
+<h3>{% blocktrans with title as filter_title %} By {{ filter_title }} {% endblocktrans %}</h3>
+
+<ul class="admin-filter-{{ title|cut:' ' }}">
+    <li>
+        <select
+                name="{{ spec.field_path }}"
+                data-ajax--type="GET"
+                data-ajax--url="{% get_autocomplete_url %}"
+                data-allow-clear="true"
+                data-ajax--cache="true"
+                data-theme="admin-autocomplete"
+                data-placeholder=""
+                id="id_{{ spec.field_path }}"
+                class="admin-filter-autocomplete-{{ spec.field_path }}"
+                style="width:100%;"
+        >
+            {% for choice in choices %}
+                {% if choice.selected %}
+                    <option value="{{ spec.lookup_val }}" selected>{{ choice.display }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+    </li>
+</ul>
+
+<script>
+    $(document).ready(function () {
+        $('.admin-filter-autocomplete-{{ spec.field_path }}').djangoAdminFilterSelect2();
+    });
+</script>
