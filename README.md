@@ -40,7 +40,7 @@ class Media:
         'admin/js/vendor/jquery/jquery.min.js',
         'admin/js/vendor/select2/select2.full.min.js',
         'admin/js/jquery.init.js',
-        'admin/js/autocomplete.js',
+        'django_admin_listfilter_dropdown/autocomplete.js',
     )
 
     css = {
@@ -49,6 +49,13 @@ class Media:
             'admin/css/autocomplete.css',
         ),
     }
+```
+
+Also make sure your `STATICFILES_FINDERS` setting is either set to the Django default or contains:
+
+```
+...
+'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 ```
 
 Use in `admin.py`:
