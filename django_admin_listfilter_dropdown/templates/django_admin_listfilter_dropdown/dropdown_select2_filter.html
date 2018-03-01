@@ -14,13 +14,10 @@
                 data-placeholder=""
                 id="id_{{ spec.field_path }}"
                 class="admin-filter-autocomplete"
+                data-lookup-kwarg="{{ spec.lookup_kwarg }}"
                 style="width:100%;"
         >
-            {% for choice in choices %}
-                {% if choice.selected %}
-                    <option value="{{ spec.lookup_val }}" selected>{{ choice.display }}</option>
-                {% endif %}
-            {% endfor %}
+            <option value="{{ spec.lookup_val }}" selected>{% get_model %}</option>
         </select>
     </li>
 </ul>

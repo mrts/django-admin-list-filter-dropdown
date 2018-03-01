@@ -21,5 +21,5 @@ class RelatedOnlyDropdownFilter(RelatedOnlyFieldListFilter):
     template = 'django_admin_listfilter_dropdown/dropdown_filter.html'
 
 
-class RelatedSelect2DropdownFilter(RelatedFieldListFilter):
+class RelatedSelect2DropdownFilter(RelatedOnlyFieldListFilter):
     template = 'django_admin_listfilter_dropdown/dropdown_select2_filter.html'

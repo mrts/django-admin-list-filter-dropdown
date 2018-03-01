@@ -11,7 +11,7 @@
             }
         }, options);
         $element.select2(settings).on('change', function (ev) {
-            var filter_param = jQuery(this).attr('name') + '__id__exact';
+            var filter_param = jQuery(this).data('lookup-kwarg');
             // TODO: Not all browsers support URLSearchParams
             // https://caniuse.com/#search=URLSearchParams
             params = new URLSearchParams(window.location.search);
@@ -20,7 +20,7 @@
             } else {
                 params.delete(filter_param);
             }
-            window.location.search = params.toString()
+            window.location.search = params.toString();
         })
     };
 
