@@ -40,6 +40,18 @@ class EntityAdmin(admin.ModelAdmin):
         # for related fields
         ('a_foreignkey_field', RelatedDropdownFilter),
     )
+
+
+# Use with custom filters by overriding the template
+class CustomFilter(SimpleListFilter):
+    template = 'django_admin_listfilter_dropdown/dropdown_filter.html'
+
+    def lookups(self, request, model_admin):
+        # Lookups to be used
+
+    def queryset(self, request, queryset):
+        # QS filtering
+
 ```
 
 # Example
