@@ -42,6 +42,19 @@ class EntityAdmin(admin.ModelAdmin):
     )
 ```
 
+Example of a custom filter that uses the provided template:
+
+```py
+class CustomFilter(SimpleListFilter):
+    template = 'django_admin_listfilter_dropdown/dropdown_filter.html'
+
+    def lookups(self, request, model_admin):
+        ...
+
+    def queryset(self, request, queryset):
+        ...
+```
+
 # Example
 
 Here's what it looks like:
