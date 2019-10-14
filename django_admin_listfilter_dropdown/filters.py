@@ -1,8 +1,14 @@
 from django.contrib.admin.filters import (
+    SimpleListFilter,
     AllValuesFieldListFilter,
     ChoicesFieldListFilter,
-    RelatedFieldListFilter, RelatedOnlyFieldListFilter
+    RelatedFieldListFilter,
+    RelatedOnlyFieldListFilter
 )
+
+
+class SimpleDropdownFilter(SimpleListFilter):
+    template = 'django_admin_listfilter_dropdown/dropdown_filter.html'
 
 
 class DropdownFilter(AllValuesFieldListFilter):
