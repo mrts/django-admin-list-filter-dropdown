@@ -1,10 +1,13 @@
 {% load i18n %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
 <script type="text/javascript">var go_from_select = function(opt) { window.location = window.location.pathname + opt };</script>
 <h3>{% blocktrans with title as filter_title %} By {{ filter_title }} {% endblocktrans %}</h3>
 <ul class="admin-filter-{{ title|cut:' ' }}">
 {% if choices|slice:"4:" %}
     <li>
-    <select class="form-control" style="width: 95%;margin-left: 2%;"
+    <select class="form-control js-example-basic-single" style="width: 95%;margin-left: 2%;"
         onchange="go_from_select(this.options[this.selectedIndex].value)">
     {% for choice in choices %}
         <option{% if choice.selected %} selected="selected"{% endif %}
@@ -21,3 +24,10 @@
 
 {% endif %}
 </ul>
+
+<script>
+
+    $(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
+</script>
