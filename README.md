@@ -8,6 +8,9 @@ Django admin, the filtering sidebar gets long, cluttered and hard to use.
 This app contains the `DropdownFilter` class that renders as a drop-down in the
 filtering sidebar to avoid this problem.
 
+**P.S.** It will only render the dropdown if the field has 4 or more choices,
+if you have fewer choices it will render the normal filtering list.
+
 # Usage
 
 Install:
